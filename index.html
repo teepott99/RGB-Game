@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RGB Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+</head>
+<body>
+    <h1>RGB Game</h1>
+    <!-- This is the RGB inputs -->
+    <div id="color-inputs">
+        <p>Red: </p><input type="number" id="red" class="rgb-input" min="0" max="255" value="0">
+        <p>Green: </p><input type="number" id="green" class="rgb-input" min="0" max="255" value="0">
+        <p>Blue: </p><input type="number" id="blue" class="rgb-input" min="0" max="255" value="0">
+    </div>
+    <div class="div" id="match" style="background-color:rgb(150, 30, 30)"></div>
+    <div class="div" id="input" style="background-color:rgb(30, 150, 110)"></div>
+
+        <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+    
+</body>
+</html>
+
+
+    <!-- <div id="intro-card">
+        <p>
+            The RGB game is intended to be a learning experience for users (likely designers, coders or maybe just color enthusiasts!) to get a better understanding of how the values of <span class="bold" id="red">R</span>ed, <span class="bold" id="blue">B</span>lue, and <span class="bold" id="green">G</span>reen interact on our computers.
+        </p>
+        <button name="next-btn">Next</button> -->
