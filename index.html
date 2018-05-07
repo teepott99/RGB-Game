@@ -12,12 +12,12 @@
     <h1>RGB Game</h1>
     <!-- This is the RGB inputs -->
     <div id="color-inputs">
-        <p>Red: </p><input type="number" id="red" class="rgb-input" min="0" max="255" value="0">
-        <p>Green: </p><input type="number" id="green" class="rgb-input" min="0" max="255" value="0">
-        <p>Blue: </p><input type="number" id="blue" class="rgb-input" min="0" max="255" value="0">
+        <p>Red: </p><input type="number" id="red" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
+        <p>Green: </p><input type="number" id="green" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
+        <p>Blue: </p><input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
     </div>
     <div class="div" id="match" style="background-color:rgb(150, 30, 30)"></div>
-    <div class="div" id="input" style="background-color:rgb(30, 150, 110)"></div>
+    <div class="div" id="input" ></div>
 
         <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
