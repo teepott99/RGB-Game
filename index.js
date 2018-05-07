@@ -3,26 +3,23 @@ var g = Math.floor(Math.random()*256);          // Random between 0-255
 var b = Math.floor(Math.random()*256);          // Random between 0-255
 var randomRGB = 'rgb(' + r + ',' + g + ',' + b + ')'; // Collect all to a string
 
-
-var input = $("#input");
-var colorValues = [];
-
-function rgb() {
-    //grabs the values of the input boxes
-    var red = $("#red").val();
-    var green = $("#green").val();
-    var blue = $("#blue").val();
-    //replaces div2 RGB values with those from input boxes
-    input.css("background-color", randomRGB);
-}
-
 function randomInputDiv() {
+    //replaces div2 RGB values with those from input boxes
+    $("#input").css("background-color", randomRGB);
     //applies random color to input div
-    input.css("background-color", randomRGB);
+    $("#input").css("background-color", randomRGB);
     //applies random color values to RGB inputs
     $("#red").val(r)
     $("#green").val(g)
     $("#blue").val(b)
+    return;
+}
+
+function randomMatchDiv() {
+    //replaces div2 RGB values with those from input boxes
+    $("#match").css("background-color", randomRGB);
+    //applies random color to match div
+    match.css("background-color", randomRGB);
     return;
 }
 
@@ -43,8 +40,6 @@ $("#start-btn").click(function(){
 })
 
 $(document).ready(function(){
-    rgb();
-    // pushColor();
     randomInputDiv();
 });
 
