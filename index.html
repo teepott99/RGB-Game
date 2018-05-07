@@ -5,16 +5,22 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RGB Game</title>
+    <link rel="stylesheet"  type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 </head>
 <body>
     <h1>RGB Game</h1>
     <!-- This is the RGB inputs -->
     <div id="color-inputs">
-        <p>Red: </p><input type="number" id="red" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
-        <p>Green: </p><input type="number" id="green" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
-        <p>Blue: </p><input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
+        <div class="col-xs-4">
+            <p>Red: </p><input type="number" id="red" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
+        </div>
+        <div class="col-xs-4">
+            <p>Green: </p><input type="number" id="green" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
+        </div>    
+        <div class="col-xs-4">
+            <p>Blue: </p><input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
+        </div>
     </div>
     <div class="div" id="match" style="background-color:rgb(150, 30, 30)"></div>
     <div class="div" id="input" ></div>
