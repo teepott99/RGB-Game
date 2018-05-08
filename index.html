@@ -14,6 +14,7 @@
     <p>
         <span id="countdown">10</span>
     </p>
+    
     <!-- This is the RGB inputs -->
     <div id="color-inputs">
         <div class="col-xs-4">
@@ -26,6 +27,22 @@
             <p>Blue: </p><input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
         </div>
     </div>
+
+    <div id="score">
+        <p>
+            Red Score: <span id="score-red">1</span>
+        </p>
+        <p>
+            Green Score: <span id="score-green">1</span>
+        </p>
+        <p>
+            Blue Score: <span id="score-blue">1</span>
+        </p>
+        <p>
+            Total Score: <span id="total-score">0</span>
+        </p>
+    </div>
+
     <div class="div" id="match" style="background-color:rgb(150, 30, 30)"></div>
     <div class="div" id="input" ></div>
 
