@@ -11,47 +11,49 @@
 <body>
     <h1>RGB Game</h1>
     <button name="start-btn" id="start-btn">Start</button>
-    <p>
+    <p class="game-start"> 
         Countdown: <span id="countdown">10</span>
     </p>
     
     <!-- This is the RGB inputs -->
-    <div id="color-inputs">
-        <div class="col-xs-4">
-            <p>Red: <input type="number" id="red" class="rgb-input" min="0" max="255" value="100" onBlur="randomInputDiv()"></p>
+    <div id="color-inputs" class="game-start">
+    <div>
+            <p>Red: <input type="number" id="red" class="rgb-input" min="0" max="255" value="100" onBlur="changeValues()"></p>
         </div>
         <div class="col-xs-4">
-            <p>Green: <input type="number" id="green" class="rgb-input" min="0" max="255" value="100" onBlur="randomInputDiv()"></p>
+            <p>Green: <input type="number" id="green" class="rgb-input" min="0" max="255" value="100" onBlur="changeValues()"></p>
         </div>    
         <div class="col-xs-4">
-            <p>Blue: <input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onBlur="randomInputDiv()"></p>
+            <p>Blue: <input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onBlur="changeValues()"></p>
         </div>
     </div>
 
-    <div id="score">
-        <p>
+    
+    <div class="div" id="match" style="background-color:rgb(150, 30, 30)"></div>
+    <div class="div" id="input" ></div>
+
+    <div>
+        <p class="scores">
             Red Score: <span id="score-red"></span>
         </p>
-        <p>
+        <p class="scores">
             Green Score: <span id="score-green"></span>
         </p>
-        <p>
+        <p class="scores">
             Blue Score: <span id="score-blue"></span>
         </p>
-        <p>
+        <p class="scores">
             Total Score: <span id="total-score"></span>
         </p>
     </div>
 
-    <div class="div" id="match" style="background-color:rgb(150, 30, 30)"></div>
-    <div class="div" id="input" ></div>
-
-        <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-  <script src="index.js"></script>
-    
+<footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</footer>
+     
 </body>
 </html>
 

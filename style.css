@@ -1,3 +1,11 @@
+.scores {
+    display: none;
+}
+
+.game-start {
+    display: none;
+}
+
 html {
     height: 100%;
 }

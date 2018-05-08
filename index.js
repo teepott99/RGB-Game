@@ -11,13 +11,24 @@ var bM = Math.floor(Math.random()*256);          // Random between 0-255
 var randomRGBMatch = 'rgb(' + rM + ',' + gM + ',' + bM + ')'; // Collect all to a string
 
 function randomInputDiv() {
-    //applies random color to input div
-    $("#input").css("background-color", randomRGB);
     //applies random color values to RGB inputs
     $("#red").val(r)
     $("#green").val(g)
     $("#blue").val(b)
+
+    //applies random color to input div
+    $("#input").css("background-color", randomRGB);
     return;
+}
+
+function changeValues() {
+    let red = $("#red").val();
+    let green = $("#green").val();
+    let blue = $("#blue").val();
+
+    //replaces div2 RGB values with those from input boxes
+    $("#input").css("background-color", "rgb(" + red + ", " + green + ", " + blue + ")");
+    ;
 }
 
 function randomMatchDiv() {
@@ -27,31 +38,36 @@ function randomMatchDiv() {
 }
 
 function calculateRed() {
-    var redScore = $("#score-red");
-    if (r >= rM) {
-        redScore.text(Math.abs((r - rM) - 255));
+    let redScore = $("#score-red");
+    if ($("#red").val() >= rM) {
+        redScore.text(Math.abs(($("#red").val() - rM) - 255));
     } else {
-        redScore.text(Math.abs((rM - r) - 255));
+        redScore.text(Math.abs((rM - $("#red").val()) - 255));
     }
     return;
 }
 function calculateGreen() {
-    var greenScore = $("#score-green");
-    if (g >= gM) {
-        greenScore.text(Math.abs((g - gM) - 255));
+    let greenScore = $("#score-green");
+    if ($("#green").val() >= gM) {
+        greenScore.text(Math.abs(($("#green").val() - gM) - 255));
     } else {
-        greenScore.text(Math.abs((gM - g) - 255));
+        greenScore.text(Math.abs((gM - $("#green").val()) - 255));
     }
     return;
 }
 function calculateBlue() {
-    var blueScore = $("#score-blue");
-    if (b >= bM) {
-        blueScore.text(Math.abs((b - bM) - 255));
+    let blueScore = $("#score-blue");
+    if ($("#blue").val() >= bM) {
+        blueScore.text(Math.abs(($("#blue").val() - bM) - 255));
     } else {
-        blueScore.text(Math.abs((bM - b) - 255));
+        blueScore.text(Math.abs((bM - $("#blue").val()) - 255));
     }
     return;
+}
+
+function totalScore() {
+    
+    return $("#score-blue")+$("#score-green")+$("#score-red");
 }
 
 // var total = eval(redScore + greenScore + blueScore);
@@ -70,6 +86,7 @@ function calculateBlue() {
 //Start button begins countdown
 $("#start-btn").click(function(){
     var counter = 10;
+    $(".game-start").toggle('show');
     setInterval(function(){
     counter--;
     if (counter >= 0) {
@@ -80,11 +97,14 @@ $("#start-btn").click(function(){
          console.log('sorry, out of time');
          
          clearInterval(counter);
+
+         $(".scores").toggle();
          
          calculateRed();
          calculateGreen();
          calculateBlue();
-        //  total;
+         totalScore();
+        
        }
      }, 1000);
 })
@@ -100,6 +120,7 @@ $("#start-btn").click(function(){
 $(document).ready(function(){
     randomInputDiv();
     randomMatchDiv();
+    changeValues();
     
 });
 
