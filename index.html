@@ -12,34 +12,34 @@
     <h1>RGB Game</h1>
     <button name="start-btn" id="start-btn">Start</button>
     <p>
-        <span id="countdown">10</span>
+        Countdown: <span id="countdown">10</span>
     </p>
     
     <!-- This is the RGB inputs -->
     <div id="color-inputs">
         <div class="col-xs-4">
-            <p>Red: </p><input type="number" id="red" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
+            <p>Red: <input type="number" id="red" class="rgb-input" min="0" max="255" value="100" onBlur="randomInputDiv()"></p>
         </div>
         <div class="col-xs-4">
-            <p>Green: </p><input type="number" id="green" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
+            <p>Green: <input type="number" id="green" class="rgb-input" min="0" max="255" value="100" onBlur="randomInputDiv()"></p>
         </div>    
         <div class="col-xs-4">
-            <p>Blue: </p><input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onBlur="rgb()">
+            <p>Blue: <input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onBlur="randomInputDiv()"></p>
         </div>
     </div>
 
     <div id="score">
         <p>
-            Red Score: <span id="score-red">1</span>
+            Red Score: <span id="score-red"></span>
         </p>
         <p>
-            Green Score: <span id="score-green">1</span>
+            Green Score: <span id="score-green"></span>
         </p>
         <p>
-            Blue Score: <span id="score-blue">1</span>
+            Blue Score: <span id="score-blue"></span>
         </p>
         <p>
-            Total Score: <span id="total-score">0</span>
+            Total Score: <span id="total-score"></span>
         </p>
     </div>
 

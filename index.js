@@ -26,6 +26,47 @@ function randomMatchDiv() {
     return;
 }
 
+function calculateRed() {
+    var redScore = $("#score-red");
+    if (r >= rM) {
+        redScore.text(Math.abs((r - rM) - 255));
+    } else {
+        redScore.text(Math.abs((rM - r) - 255));
+    }
+    return;
+}
+function calculateGreen() {
+    var greenScore = $("#score-green");
+    if (g >= gM) {
+        greenScore.text(Math.abs((g - gM) - 255));
+    } else {
+        greenScore.text(Math.abs((gM - g) - 255));
+    }
+    return;
+}
+function calculateBlue() {
+    var blueScore = $("#score-blue");
+    if (b >= bM) {
+        blueScore.text(Math.abs((b - bM) - 255));
+    } else {
+        blueScore.text(Math.abs((bM - b) - 255));
+    }
+    return;
+}
+
+// var total = eval(redScore + greenScore + blueScore);
+
+// var total = reduce("calculateRed() + calculateBlue() + calculateGreen()");
+
+// function totalScore(){ 
+//     var total = $("#total-score");
+//     total = (+calculateRed() + (+calculateBlue()) + (+calculateGreen()));
+// };
+
+// function totalScore() {
+//     return $("#total-score").text(Math.abs(calculateRed()+calculateGreen()+calculateBlue()))
+// }
+
 //Start button begins countdown
 $("#start-btn").click(function(){
     var counter = 10;
@@ -39,7 +80,11 @@ $("#start-btn").click(function(){
          console.log('sorry, out of time');
          
          clearInterval(counter);
-         calculateScore();
+         
+         calculateRed();
+         calculateGreen();
+         calculateBlue();
+        //  total;
        }
      }, 1000);
 })
@@ -51,17 +96,10 @@ $("#start-btn").click(function(){
 //     return;
 // }
 
-function calculateRed(r, rM) {
-    let redScore = $("#score-red");
-    return redScore.text(Math.abs((r - rM) - 255));
-}
-
-console.log($("#score-red"))
 
 $(document).ready(function(){
     randomInputDiv();
     randomMatchDiv();
-    calculateRed();
     
 });
 
