@@ -44,6 +44,7 @@ function calculateRed() {
     } else {
         redScore.text(Math.abs((rM - $("#red").val()) - 255));
     }
+    console.log(redScore.innerText)
     return;
 }
 function calculateGreen() {
@@ -99,6 +100,8 @@ $("#start-btn").click(function(){
          clearInterval(counter);
 
          $(".scores").toggle();
+
+         $('#myInput').attr('readonly', 'readonly');
          
          calculateRed();
          calculateGreen();
