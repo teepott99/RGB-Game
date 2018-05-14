@@ -5,18 +5,25 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RGB Game</title>
-    <link rel="stylesheet"  type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script src="index.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <h1>RGB Game</h1>
-    <button name="start-btn" id="start-btn">Start</button>
-    <p class="game-start"> 
+    <div class="game-start">
+    <p> 
         Countdown: <span id="countdown">10</span>
     </p>
     
     <!-- This is the RGB inputs -->
-    <div id="color-inputs" class="game-start">
+    <div id="color-inputs">
     <div>
             <p>Red: <input type="number" id="red" class="rgb-input" min="0" max="255" value="100" onBlur="changeValues()"></p>
         </div>
@@ -24,7 +31,7 @@
             <p>Green: <input type="number" id="green" class="rgb-input" min="0" max="255" value="100" onBlur="changeValues()"></p>
         </div>    
         <div class="col-xs-4">
-            <p>Blue: <input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onBlur="changeValues()"></p>
+            <p>Blue: <input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onBlur="startGame()"></p>
         </div>
     </div>
 
@@ -47,19 +54,110 @@
         </p>
     </div>
 
+    <button type="button" class="btn btn-primary nextRound" onclick="nextRound(); randomColors() ">Next Round</button>
+</div>
+
+    <!-- First Modal -->
+<div id="modal-one" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Welcome!</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+                <p>The RGB game is intended to be a learning experience for users (likely designers, coders or maybe just color enthusiasts!) to get a better understanding of how the values of <span class="bold" id="red">R</span>ed, <span class="bold" id="blue">B</span>lue, and <span class="bold" id="green">G</span>reen interact on our computers.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="secondMod()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Second Modal -->
+<div id="modal-two" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">The Rules</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+                <p>You have 10 seconds to get the bottom color as close to the top color as you can by inputting the values for red, green, and blue. Player with the highest score wins!   </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="firstMod()">Previous</button>
+                <button type="button" class="btn btn-primary" id="start-btn" onClick="randomColors()">Start</button>
+                <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-r2" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Round 2</h5>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button> -->
+                </div>
+                <div class="modal-body">
+                    <p>Ready?</p>
+                </div>
+                    <button type="button" class="btn btn-primary" id="start-btn" onclick="round2(); randomColors()">Start!</button>
+                    <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
 <footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-    <script src="index.js"></script>
+      
 </footer>
      
 </body>
 </html>
 
+<!-- <div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+<div class="modal-dialog modal-dialog-centered">
+    <p class="modal-body">
+        The RGB game is intended to be a learning experience for users (likely designers, coders or maybe just color enthusiasts!) to get a better understanding of how the values of <span class="bold" id="red">R</span>ed, <span class="bold" id="blue">B</span>lue, and <span class="bold" id="green">G</span>reen interact on our computers.
+    </p>
+    <button name="next-btn">Next</button>
+</div>
+</div>
+</div>
+</div>
+</div> -->
 
-    <!-- <div id="intro-card">
-        <p>
-            The RGB game is intended to be a learning experience for users (likely designers, coders or maybe just color enthusiasts!) to get a better understanding of how the values of <span class="bold" id="red">R</span>ed, <span class="bold" id="blue">B</span>lue, and <span class="bold" id="green">G</span>reen interact on our computers.
-        </p>
-        <button name="next-btn">Next</button> -->
+<!-- <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      
