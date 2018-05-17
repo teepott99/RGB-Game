@@ -10,7 +10,8 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+    <!-- Number Scrubber CDN -->
+    <!-- <script src="https://unpkg.com/numscrubberjs"></script> -->
 
     <script src="index.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -19,23 +20,33 @@
     <h1>RGB Game</h1>
     <div class="game-start">
     <p> 
-        Countdown: <span id="countdown">10</span>
+        Initial Game Start Countdown: <span id="countdown"></span>
+        Counter: <span id="counter"></span>
     </p>
     
     <!-- This is the RGB inputs -->
     <div id="color-inputs">
-    <div>
-            <p>Red: <input type="number" id="red" class="rgb-input" min="0" max="255" value="100" onBlur="changeValues()"></p>
-        </div>
-        <div class="col-xs-4">
-            <p>Green: <input type="number" id="green" class="rgb-input" min="0" max="255" value="100" onBlur="changeValues()"></p>
-        </div>    
-        <div class="col-xs-4">
-            <p>Blue: <input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onBlur="startGame()"></p>
-        </div>
+    
+            <p>Red: <input type="number" id="red" class="rgb-input" min="0" max="255" value="100" onChange="changeValues()"></p>
+    
+            <p>Green: <input type="number" id="green" class="rgb-input" min="0" max="255" value="100" onChange="changeValues()"></p>
+    
+    
+            <p>Blue: <input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onChange="changeValues()"></p>
+
+
+            <!-- //Number Scrubber -->
+            <!-- <p>Red: <input data-numscrubber class="rgb-input" id="red" type="number" value="2" min="0" max="255" onChange="changeValues()" /></p>
+
+            <p>Green: <input data-numscrubber id="green" class="custom_input rgb-input" type="number" value="2" min="0" max="255" onChange="changeValues()"/></p>
+
+            <p>Blue: <input data-numscrubber id="blue" class="custom_input rgb-input" type="number" value="2" min="0" max="255" onChange="changeValues()"/></p> -->
+    
     </div>
 
-    
+    <div>
+        <span id="displayMatchValues">        </span>
+    </div>
     <div class="div" id="match" style="background-color:rgb(150, 30, 30)"></div>
     <div class="div" id="input" ></div>
 
@@ -54,7 +65,9 @@
         </p>
     </div>
 
-    <button type="button" class="btn btn-primary nextRound" onclick="nextRound(); randomColors() ">Next Round</button>
+    <button type="button" class="btn btn-primary nextRound" onclick="nextRound()">Next Round</button>
+
+    <button type="button" class="btn btn-primary lastRound" onclick="lastRound()">Last Round</button>
 </div>
 
     <!-- First Modal -->
@@ -99,6 +112,7 @@
     </div>
 </div>
 
+<!-- Round 2 Modal -->
 <div id="modal-r2" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -111,12 +125,33 @@
                 <div class="modal-body">
                     <p>Ready?</p>
                 </div>
-                    <button type="button" class="btn btn-primary" id="start-btn" onclick="round2(); randomColors()">Start!</button>
+                    <button type="button" class="btn btn-primary" id="start-btn" onclick="randomColors()">Start!</button>
                     <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Final Round Modal -->
+    <div id="modal-r3" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Round 3</h5>
+                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button> -->
+                    </div>
+                    <div class="modal-body">
+                        <p>Last round! Ready?</p>
+                    </div>
+                        <button type="button" class="btn btn-primary" id="start-btn" onclick="randomColors()">Start!</button>
+                        <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    
 
 <footer>
       
