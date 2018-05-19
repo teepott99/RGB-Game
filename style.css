@@ -18,6 +18,7 @@ h1 {
 body {
     font-family: 'Open Sans', sans-serif;
     mix-blend-mode: difference;
+    text-align: center;
 }
 
 .div {
