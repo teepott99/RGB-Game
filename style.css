@@ -48,48 +48,45 @@ body {
 }
 
 
-/* .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+/* SCRUBBER ELEMENTS */
+.slider {
+      position: absolute;
+      left: 50%;
+      margin-left: -101px;
+      top: 10px;
+      opacity: 0;
+      cursor: e-resize !important;
+    }
 
-    pointer-events: none;
-    opacity: 0;
-
-    will-change: transform, opacity;
-
-    -webkit-transform: scale(1.15);
-    transform: scale(1.15);
-  
-    -webkit-transition:
-      -webkit-transform 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946),
-      opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
-  
-    transition:
-      transform 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946),
-      opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+.inputNumber {
+    position: relative;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 35px;
+    padding: 3px 6px;
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;
+    cursor: e-resize !important;
 }
 
-.modal.visible {
-pointer-events: auto;
-opacity: 1;
-} */
-
-/* #match {
-    };
-
-#input {
-    height: 300px;
-    width: 300px;
-}; */
-
-/* 
-body {
-    background: linear-gradient(#c8daf7, #f9e0e9);
-    background-repeat: no-repeat;
-    height: 100%;
-    margin: 0;
-    text-align: center;
-} */
+.ui-slider {
+    height: 40px !important;
+    top: 0px !important;
+    border-radius: 5px !important;
+    cursor: e-resize !important;
+    }
+    
+.ui-slider-handle {
+    background: red !important;
+    height: 40px !important;
+    top: -1px !important;
+    outline: none !important;
+    cursor: e-resize !important;
+}
+.black {
+    border: 2px solid #333;
+    background: #222;
+    color: #fff;
+}
+    

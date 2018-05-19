@@ -10,7 +10,7 @@ function randomColors() {
     let r = Math.floor(Math.random()*256);          // Random between 0-255
     let g = Math.floor(Math.random()*256);          // Random between 0-255
     let b = Math.floor(Math.random()*256);          // Random between 0-255
-    let randomRGB = "linear gradient(rgba(" + r + ", " + g + ", " + b + ", 1)," + "rgba("+ r + ", " + g + ", " + b + ", 0))"; // Collect all to a string
+    let randomRGB = "linear gradient(rgba(" + r + ", " + g + ", " + b + ", 0)," + "rgba("+ r + ", " + g + ", " + b + ", 1))"; // Collect all to a string
 
     //Sets random values for Match Div
     let rM = Math.floor(Math.random()*256);          // Random between 0-255
@@ -92,14 +92,6 @@ function randomColors() {
         matchValues[0].innerHTML = rM + ", " + gM + ", " + bM;
     }
 
-    function getSum(total, num) {
-        return total + num;
-    }
-
-    function displayFinalScore() {
-        let displayScore = $("#final-score");
-        displayScore.innerHTML = finalScores.reduce(getSum);
-    }
 
     function startGame() {
         console.log("startGame")
@@ -112,6 +104,7 @@ function randomColors() {
         $(".nextRoundBtn").hide();
         $(".lastRoundBtn").hide();
         $(".gameEndBtn").hide();
+        $('#modal-last').modal('hide');
         
         setInterval(function(){
             countdown--;
@@ -134,7 +127,21 @@ function randomColors() {
                         console.log('sorry, out of time');
                         
                         clearInterval(counter);
-
+                        
+                        displayMatch();
+                        calculateRed();
+                        calculateGreen();
+                        calculateBlue();
+                        totalScore();
+                        finalScore();
+                        
+            
+                        $(".rgb-input").prop('disabled', true);
+                        $(".scores").show();
+                        
+                        $("#displayMatchValues").show();
+                        
+                        //Determins whether second round or last round display shows.
                         if (finalScores.length >= 2) {
                             $(".lastRoundBtn").show();
                             
@@ -144,18 +151,6 @@ function randomColors() {
                             $(".nextRoundBtn").show();
                             console.log("next round button")
                         }
-            
-                        $(".rgb-input").prop('disabled', true);
-                        $(".scores").show();
-                        
-                        $("#displayMatchValues").show();
-                        
-                        displayMatch();
-                        calculateRed();
-                        calculateGreen();
-                        calculateBlue();
-                        totalScore();
-                        finalScore();
                     
                     }
                 }, 1000); 
@@ -175,6 +170,7 @@ function randomColors() {
         $(".nextRoundBtn").hide();
         $(".lastRoundBtn").hide();
         $(".gameEndBtn").hide();
+        $('#modal-r3').modal('hide');
         
         setInterval(function(){
             countdown--;
@@ -219,6 +215,15 @@ function randomColors() {
     }
 }        
 
+
+function getSum(total, num) {
+    return total + num;
+}
+
+function displayFinalScore(item) {
+    return $("#final-score")[0].innerHTML = finalScores.reduce(getSum, 0);
+}
+
 function secondMod() {
     $("#modal-two").modal({        
         backdrop: 'static', 
@@ -237,14 +242,14 @@ function nextRound() {
 }
 
 function resetGame() {
-    let finalScores = [];
+    finalScores = [];
     $('#modal-one').modal({        
         backdrop: 'static', 
         backdrop: false,
         keyboard: false,
         show: true,}) 
     $('#modal-two').modal('hide');
-    $(".nextRoundBtn").hide();
+    $('#modal-last').modal('hide');
     $(".game-start").hide();
 }
 
@@ -254,9 +259,33 @@ function changeValues() {
     let blue = $("#blue").val();
     // console.log("Values picking up")
     //replaces div2 RGB values with those from input boxes
-    $("#input").css("background", "linear-gradient(rgba(" + red + ", " + green + ", " + blue + ", 1)," + " rgba("+ red + ", " + green + ", " + blue + ", 0))");
+    $("#input").css("background", "linear-gradient(rgba(" + red + ", " + green + ", " + blue + ", 0)," + " rgba("+ red + ", " + green + ", " + blue + ", 1))");
     
 }
+
+//SCRUBBER FUNCTION
+$ (function() {
+    var inputMinBlack = parseInt($(".black").attr("min"), 10);
+    var inputMaxBlack = parseInt($(".black").attr("max"), 10);
+  
+    var inputWidth = parseInt($(".inputNumber").innerWidth(), 10);
+  
+    $(".slider").width(inputWidth);
+    $(".sliderBlack").slider({
+      range: "min",
+      value: 0,
+      min: inputMinBlack,
+      max: inputMaxBlack,
+      slide: black
+    });
+  
+    function black(event, slider) {
+      $(".black").val(slider.value);
+    }
+  
+})
+
+
 
 function niceJobBtn() {
     $('#modal-last').modal({        

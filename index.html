@@ -13,8 +13,12 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    
-    <h1>RGB Game</h1>
+    <div id="game-standard">
+        <h1>RGB Game</h1>
+        <!-- Color Divs -->
+        <div class="div" id="match"></div>
+        <div class="div" id="input" ></div>
+    </div>
     <div class="game-start">
         <div id="countdown-screen">
             <span id="countdown">3</span>
@@ -27,20 +31,15 @@
     <!-- This is the RGB inputs -->
     <div id="color-inputs">
     
-            <p>Red: <input type="number" id="red" class="rgb-input" min="0" max="255" value="100" onChange="changeValues()"></p>
+            <p>Red: 
+                <input type="number" id="red" class="rgb-input inputNumber" min="0" max="255" value="100" onChange="changeValues()">
+                <div class="slider sliderBlack"></div>
+            </p>
     
             <p>Green: <input type="number" id="green" class="rgb-input" min="0" max="255" value="100" onChange="changeValues()"></p>
     
     
             <p>Blue: <input type="number" id="blue" class="rgb-input" min="0" max="255" value="100" onChange="changeValues()"></p>
-
-
-            <!-- //Number Scrubber -->
-            <!-- <p>Red: <input data-numscrubber class="rgb-input" id="red" type="number" value="2" min="0" max="255" onChange="changeValues()" /></p>
-
-            <p>Green: <input data-numscrubber id="green" class="custom_input rgb-input" type="number" value="2" min="0" max="255" onChange="changeValues()"/></p>
-
-            <p>Blue: <input data-numscrubber id="blue" class="custom_input rgb-input" type="number" value="2" min="0" max="255" onChange="changeValues()"/></p> -->
     
     </div>
 
@@ -64,9 +63,7 @@
         </p>
     </div>
 
-    <!-- Color Divs -->
-    <div class="div" id="match"></div>
-    <div class="div" id="input" ></div>
+
 
     <!-- BUTTONS -->
     <button type="button" class="btn btn-primary nextRoundBtn" onclick="nextRound()">Next Round</button>
@@ -171,7 +168,7 @@
                 <div class="modal-body">
                     <p>Great job! Your final score is <span id="final-score"></span>.</p>
                 </div>
-                    <button type="button" class="btn btn-primary" id="reset-btn" onclick="randomColors()">Try Again?</button>
+                    <button type="button" class="btn btn-primary" id="reset-btn" onclick="resetGame()">Try Again?</button>
                     <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
                 </div>
             </div>
@@ -186,6 +183,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
         <!-- Number Scrubber CDN -->
         <!-- <script src="https://unpkg.com/numscrubberjs"></script> -->
     
