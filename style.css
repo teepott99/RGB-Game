@@ -48,7 +48,15 @@ body {
 }
 
 
-/* SCRUBBER ELEMENTS */
+
+[data-scrub-orientation="Horizontal"]{
+    cursor: col-resize;
+  }
+/* SCRUBBER ELEMENTS
+
+
+
+
 .slider {
       position: absolute;
       left: 50%;
@@ -84,9 +92,9 @@ body {
     outline: none !important;
     cursor: e-resize !important;
 }
-.black {
+#red {
     border: 2px solid #333;
     background: #222;
     color: #fff;
 }
-    
+     */

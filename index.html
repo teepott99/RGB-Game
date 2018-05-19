@@ -32,8 +32,13 @@
     <div id="color-inputs">
     
             <p>Red: 
-                <input type="number" id="red" class="rgb-input inputNumber" min="0" max="255" value="100" onChange="changeValues()">
-                <div class="slider sliderBlack"></div>
+                <!-- <input type="number" id="red" class="rgb-input scrubbing-horizontal" min="0" max="255" value="100" onChange="changeValues()"> -->
+
+                <p class="center">
+                        <span class="scrubbing-horizontal big rgb-input" id="red">20</span>
+                      </p>
+                
+                <!-- <div class="slider sliderBlack ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min" ></div><span class="ui-slider-handle ui-corner-all ui-state-default"></span></div> -->
             </p>
     
             <p>Green: <input type="number" id="green" class="rgb-input" min="0" max="255" value="100" onChange="changeValues()"></p>
@@ -84,7 +89,7 @@
                 </button> -->
             </div>
             <div class="modal-body">
-                <p>The RGB game is intended to be a learning experience for users (likely designers, coders or maybe just color enthusiasts!) to get a better understanding of how the values of <span class="bold" id="red">R</span>ed, <span class="bold" id="blue">B</span>lue, and <span class="bold" id="green">G</span>reen interact on our computers.</p>
+                <p>The RGB game is intended to be a learning experience for users (likely designers, coders or maybe just color enthusiasts!) to get a better understanding of how the values of <span class="bold" >R</span>ed, <span class="bold" >B</span>lue, and <span class="bold" >G</span>reen interact on our computers.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" onclick="secondMod()">Next</button>
@@ -179,7 +184,7 @@
     
 
 <footer>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
