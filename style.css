@@ -50,7 +50,7 @@ body {
 
 
 
-[data-scrub-orientation="Horizontal"]{
+.scrubbing-horizontal{
     cursor: col-resize;
   }
 /* SCRUBBER ELEMENTS

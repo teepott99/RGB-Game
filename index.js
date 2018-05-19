@@ -20,7 +20,7 @@ function randomColors() {
 
     randomInputDiv();
     randomMatchDiv();    
-    changeValues();
+    // changeValues();
     gameRounds();
 
     function gameRounds() {
@@ -35,9 +35,9 @@ function randomColors() {
 
     function randomInputDiv() {
         //applies random color values to RGB inputs
-        $("#red")[0].innerHTML = r
-        $("#green").val(g)
-        $("#blue").val(b)
+        $("#red").text(r)
+        $("#green").text(g)
+        $("#blue").text(b)
         //applies random color to input div
         $("#input").css("background", randomRGB);
         return;
@@ -50,28 +50,28 @@ function randomColors() {
     }
     function calculateRed() {
         let redScore = $("#score-red");
-        if ($("#red")[0].innerHTML >= rM) {
-            redScore.text(Math.abs(($("#red")[0].innerHTML - rM) - 255));
+        if ($("#red").text() >= rM) {
+            redScore.text(Math.abs(($("#red").text() - rM) - 255));
         } else {
-            redScore.text(Math.abs((rM - $("#red")[0].innerHTML - 255)));
+            redScore.text(Math.abs((rM - $("#red").text() - 255)));
         }
         return;
     }
     function calculateGreen() {
         let greenScore = $("#score-green");
-        if ($("#green").val() >= gM) {
-            greenScore.text(Math.abs(($("#green").val() - gM) - 255));
+        if ($("#green").text() >= gM) {
+            greenScore.text(Math.abs(($("#green").text() - gM) - 255));
         } else {
-            greenScore.text(Math.abs((gM - $("#green").val()) - 255));
+            greenScore.text(Math.abs((gM - $("#green").text()) - 255));
         }
         return;
     }
     function calculateBlue() {
         let blueScore = $("#score-blue");
-        if ($("#blue").val() >= bM) {
-            blueScore.text(Math.abs(($("#blue").val() - bM) - 255));
+        if ($("#blue").text() >= bM) {
+            blueScore.text(Math.abs(($("#blue").text() - bM) - 255));
         } else {
-            blueScore.text(Math.abs((bM - $("#blue").val()) - 255));
+            blueScore.text(Math.abs((bM - $("#blue").text()) - 255));
         }
         return;
     }
@@ -253,20 +253,19 @@ function resetGame() {
     $(".game-start").hide();
 }
 
-function changeValues() {
-    let red = $("#red")[0].innerHTML;
-    let green = $("#green").val();
-    let blue = $("#blue").val();
-    // console.log("Values picking up")
-    //replaces div2 RGB values with those from input boxes
+$('.rgb-input').on('DOMSubtreeModified',function(){
+    let red = $("#red").text();
+    let green = $("#green").text();
+    let blue = $("#blue").text();
+   
     $("#input").css("background", "linear-gradient(rgba(" + red + ", " + green + ", " + blue + ", 0)," + " rgba("+ red + ", " + green + ", " + blue + ", 1))");
-    
-}
-
-//SCRUBBER FUNCTION
-new Scrubbing ( document.querySelector ( '.scrubbing-horizontal') )
+  })
   
 
+//SCRUBBER FUNCTION
+new Scrubbing ( document.querySelector ( '#red') );
+new Scrubbing ( document.querySelector ( '#green') );
+new Scrubbing ( document.querySelector ( '#blue') );
 
 function niceJobBtn() {
     $('#modal-last').modal({        
