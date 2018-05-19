@@ -5,23 +5,23 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RGB Game</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!-- Number Scrubber CDN -->
-    <!-- <script src="https://unpkg.com/numscrubberjs"></script> -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
 
-    <script src="index.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    
     <h1>RGB Game</h1>
     <div class="game-start">
-    <p> 
-        Initial Game Start Countdown: <span id="countdown"></span>
-        Counter: <span id="counter"></span>
+        <div id="countdown-screen">
+            <span id="countdown">3</span>
+        </div>
+    
+        <p> 
+        Counter: <span id="counter">15</span>
     </p>
     
     <!-- This is the RGB inputs -->
@@ -47,8 +47,7 @@
     <div>
         <span id="displayMatchValues">        </span>
     </div>
-    <div class="div" id="match" style="background-color:rgb(150, 30, 30)"></div>
-    <div class="div" id="input" ></div>
+
 
     <div>
         <p class="scores">
@@ -65,9 +64,16 @@
         </p>
     </div>
 
-    <button type="button" class="btn btn-primary nextRound" onclick="nextRound()">Next Round</button>
+    <!-- Color Divs -->
+    <div class="div" id="match"></div>
+    <div class="div" id="input" ></div>
 
-    <button type="button" class="btn btn-primary lastRound" onclick="lastRound()">Last Round</button>
+    <!-- BUTTONS -->
+    <button type="button" class="btn btn-primary nextRoundBtn" onclick="nextRound()">Next Round</button>
+
+    <button type="button" class="btn btn-primary lastRoundBtn" onclick="lastRound()">Last Round</button>
+
+    <button type="button" class="btn btn-primary gameEndBtn" onclick="niceJobBtn()">Nice job!</button>
 </div>
 
     <!-- First Modal -->
@@ -151,10 +157,39 @@
                 </div>
             </div>
         </div>
+
+    <!-- Game Over Modal -->
+    <div id="modal-last" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Congratulations!</h5>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button> -->
+                </div>
+                <div class="modal-body">
+                    <p>Great job! Your final score is <span id="final-score"></span>.</p>
+                </div>
+                    <button type="button" class="btn btn-primary" id="reset-btn" onclick="randomColors()">Try Again?</button>
+                    <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
     
 
 <footer>
-      
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- Number Scrubber CDN -->
+        <!-- <script src="https://unpkg.com/numscrubberjs"></script> -->
+    
+        <script src="index.js"></script>
 </footer>
      
 </body>

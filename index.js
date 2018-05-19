@@ -1,3 +1,5 @@
+let finalScores = [];
+
 function randomColors() {
     
     $("#modal-two").modal('hide');
@@ -5,30 +7,39 @@ function randomColors() {
     $(".game-start").show();
     
     //Sets random values for Input Div
-    var r = Math.floor(Math.random()*256);          // Random between 0-255
-    var g = Math.floor(Math.random()*256);          // Random between 0-255
-    var b = Math.floor(Math.random()*256);          // Random between 0-255
-    var randomRGB = 'rgb(' + r + ',' + g + ',' + b + ')'; // Collect all to a string
+    let r = Math.floor(Math.random()*256);          // Random between 0-255
+    let g = Math.floor(Math.random()*256);          // Random between 0-255
+    let b = Math.floor(Math.random()*256);          // Random between 0-255
+    let randomRGB = "linear gradient(rgba(" + r + ", " + g + ", " + b + ", 1)," + "rgba("+ r + ", " + g + ", " + b + ", 0))"; // Collect all to a string
 
     //Sets random values for Match Div
-    var rM = Math.floor(Math.random()*256);          // Random between 0-255
-    var gM = Math.floor(Math.random()*256);          // Random between 0-255
-    var bM = Math.floor(Math.random()*256);          // Random between 0-255
-    var randomRGBMatch = 'rgb(' + rM + ',' + gM + ',' + bM + ')'; // Collect all to a string
+    let rM = Math.floor(Math.random()*256);          // Random between 0-255
+    let gM = Math.floor(Math.random()*256);          // Random between 0-255
+    let bM = Math.floor(Math.random()*256);          // Random between 0-255
+    let randomRGBMatch = 'rgb(' + rM + ',' + gM + ',' + bM + ')'; // Collect all to a string
 
     randomInputDiv();
     randomMatchDiv();    
     changeValues();
-    startGame();
+    gameRounds();
+
+    function gameRounds() {
+        if (finalScores.length >= 2) {
+            finalStart();
+            console.log("final start in game rounds function")
+        } else {
+            startGame();
+            console.log("start game in game rounds function")
+        }
+    }
 
     function randomInputDiv() {
         //applies random color values to RGB inputs
         $("#red").val(r)
         $("#green").val(g)
         $("#blue").val(b)
-        console.log("hello")
         //applies random color to input div
-        $("#input").css("background-color", randomRGB);
+        $("#input").css("background", randomRGB);
         return;
     }
 
@@ -68,15 +79,12 @@ function randomColors() {
     
     function totalScore() {    
         $("#total-score")[0].innerHTML = Number($("#score-blue")[0].innerHTML)+Number($("#score-green")[0].innerHTML)+Number($("#score-red")[0].innerHTML);
-    
         
     }
 
     function finalScore() {
-        var finalScore = [];
-
-        finalScore.push($("#total-score")[0].innerHTML);
-        console.log(finalScore);
+        finalScores.push($("#total-score")[0].innerHTML);
+        console.log(finalScores);
     }
 
     function displayMatch() {
@@ -84,66 +92,160 @@ function randomColors() {
         matchValues[0].innerHTML = rM + ", " + gM + ", " + bM;
     }
 
+    function getSum(total, num) {
+        return total + num;
+    }
+
+    function displayFinalScore() {
+        let displayScore = $("#final-score");
+        displayScore.innerHTML = finalScores.reduce(getSum);
+    }
+
     function startGame() {
+        console.log("startGame")
         var counter = 16;
         var countdown = 4;
 
         $(".scores").hide();
-        $(".nextRound").hide();
         $("#displayMatchValues").hide();
-        $(".lastRound").hide();
+
+        $(".nextRoundBtn").hide();
+        $(".lastRoundBtn").hide();
+        $(".gameEndBtn").hide();
         
         setInterval(function(){
             countdown--;
             if (countdown >= 0) {
-                    span = document.getElementById("countdown");
-                    span.innerHTML = countdown;
-                    $(".rgb-input").prop('disabled', true);
-                }
-                if (countdown === 0) {
-                    setInterval(function(){
+                span = document.getElementById("countdown");
+                span.innerHTML = countdown;
+                $("#countdown-screen").show();
+                $(".rgb-input").prop('disabled', true);
+            }
+            if (countdown === 0) {
+                $("#countdown-screen").hide();
+                setInterval(function(){
                         counter--;
-                        if (counter >= 0) {
-                                span = document.getElementById("counter");
-                                span.innerHTML = counter;
-                                $(".rgb-input").prop('disabled', false);
-                            }
-                            if (counter === 0) {
-                                console.log('sorry, out of time');
-                                
-                                clearInterval(counter);
-                    
-                                $(".rgb-input").prop('disabled', true);
-                                $(".scores").show();
-                                $(".nextRound").show();
-                                $("#displayMatchValues").show();
-                    
-                                $('#myInput').attr('readonly', 'readonly');
-                                
-                                displayMatch();
-                                calculateRed();
-                                calculateGreen();
-                                calculateBlue();
-                                totalScore();
-                                finalScore();
+                    if (counter >= 0) {
+                            span = document.getElementById("counter");
+                            span.innerHTML = counter;
+                            $(".rgb-input").prop('disabled', false);
+                        }
+                    if (counter === 0) {
+                        console.log('sorry, out of time');
+                        
+                        clearInterval(counter);
+
+                        if (finalScores.length >= 2) {
+                            $(".lastRoundBtn").show();
                             
-                            }
-                        }, 1000); }
-                 }, 1000)
-        }
+                            console.log("last round button")
+                        } else {
+                            
+                            $(".nextRoundBtn").show();
+                            console.log("next round button")
+                        }
+            
+                        $(".rgb-input").prop('disabled', true);
+                        $(".scores").show();
+                        
+                        $("#displayMatchValues").show();
+                        
+                        displayMatch();
+                        calculateRed();
+                        calculateGreen();
+                        calculateBlue();
+                        totalScore();
+                        finalScore();
+                    
+                    }
+                }, 1000); 
+            }
+        }, 1000)
+    }
+
+
+    function finalStart() {
+        console.log("startGame")
+        var counter = 16;
+        var countdown = 4;
+
+        $(".scores").hide();
+        $("#displayMatchValues").hide();
+
+        $(".nextRoundBtn").hide();
+        $(".lastRoundBtn").hide();
+        $(".gameEndBtn").hide();
         
-        
-    
-       
-        
+        setInterval(function(){
+            countdown--;
+            if (countdown >= 0) {
+                span = document.getElementById("countdown");
+                span.innerHTML = countdown;
+                $("#countdown-screen").show();
+                $(".rgb-input").prop('disabled', true);
+            }
+            if (countdown === 0) {
+                $("#countdown-screen").hide();
+                setInterval(function(){
+                        counter--;
+                    if (counter >= 0) {
+                            span = document.getElementById("counter");
+                            span.innerHTML = counter;
+                            $(".rgb-input").prop('disabled', false);
+                        }
+                    if (counter === 0) {
+                        console.log('sorry, out of time');
+                        
+                        clearInterval(counter);
+            
+                        $(".rgb-input").prop('disabled', true);
+                        $(".scores").show();
+                        
+                        $("#displayMatchValues").show();
+
+                        $(".gameEndBtn").show();
+                        
+                        displayMatch();
+                        calculateRed();
+                        calculateGreen();
+                        calculateBlue();
+                        totalScore();
+                        finalScore();
+                    
+                    }
+                }, 1000); 
+            }
+        }, 1000)
+    }
+}        
+
+function secondMod() {
+    $("#modal-two").modal({        
+        backdrop: 'static', 
+        backdrop: false,
+        keyboard: false,
+        show: true,});
+    $("#modal-one").modal('hide');
 }
 
-function round3() {
-    if (totalScore.length === 2) {
-        $(".lastRound").show();
-    } else {
-        return;
-    }
+function nextRound() {
+    $('#modal-r2').modal({        
+        backdrop: 'static', 
+        backdrop: false,
+        keyboard: false,
+        show: true,});
+}
+
+function resetGame() {
+    let finalScores = [];
+    $('#modal-one').modal({        
+        backdrop: 'static', 
+        backdrop: false,
+        keyboard: false,
+        show: true,}) 
+    $('#modal-two').modal('hide');
+    $(".nextRoundBtn").hide();
+    $(".game-start").hide();
 }
 
 function changeValues() {
@@ -152,43 +254,38 @@ function changeValues() {
     let blue = $("#blue").val();
     // console.log("Values picking up")
     //replaces div2 RGB values with those from input boxes
-    $("#input").css("background-color", "rgb(" + red + ", " + green + ", " + blue + ")");
+    $("#input").css("background", "linear-gradient(rgba(" + red + ", " + green + ", " + blue + ", 1)," + " rgba("+ red + ", " + green + ", " + blue + ", 0))");
     
 }
 
-function firstMod() {
-    $("#modal-one").modal('show');
-    $("#modal-two").modal('hide');
-}
-
-function secondMod() {
-    $("#modal-two").modal('show');
-    $("#modal-one").modal('hide');
-}
-
-
-
-function clearMessage(event) {
-    event.preventDefault();  // Stops the page from refreshing
-    var screen = document.getElementById("screen");
-    screen.innerHTML = '';
-}
-
-function nextRound() {
-    $('#modal-r2').modal('show');
+function niceJobBtn() {
+    $('#modal-last').modal({        
+        backdrop: 'static', 
+        backdrop: false,
+        keyboard: false,
+        show: true,});
     $(".game-start").hide();
 }
 
 function lastRound() {
-    $('#modal-r3').modal('show');
+    $('#modal-r3').modal({        
+    backdrop: 'static', 
+    backdrop: false,
+    keyboard: false,
+    show: true,});
     $(".game-start").hide();
 }
 
 $(window).on('load',function(){
-    $('#modal-one').modal('show');
+    
+    $('#modal-one').modal({
+        backdrop: 'static', 
+        backdrop: false,
+        keyboard: false,
+        show: true,
+      }) 
     $('#modal-two').modal('hide');
-    $(".nextRound").hide();
+    $(".nextRoundBtn").hide();
     $(".game-start").hide();
     // Numscrubber.init();
 });
-
