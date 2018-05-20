@@ -48,6 +48,7 @@ function randomColors() {
         $("#match").css("background-color", randomRGBMatch);
         return;
     }
+
     function calculateRed() {
         let redScore = $("#score-red");
         if ($("#red").text() >= rM) {
@@ -83,7 +84,7 @@ function randomColors() {
     }
 
     function finalScore() {
-        finalScores.push($("#total-score")[0].innerHTML);
+        finalScores.push($("#total-score").html());
         console.log(finalScores);
     }
 
@@ -95,8 +96,8 @@ function randomColors() {
 
     function startGame() {
         console.log("startGame")
-        var counter = 16;
-        var countdown = 4;
+        var counter = 1;
+        var countdown = 1;
 
         $(".scores").hide();
         $("#displayMatchValues").hide();
@@ -135,6 +136,7 @@ function randomColors() {
                         totalScore();
                         finalScore();
                         
+                        
             
                         $(".rgb-input").prop('disabled', true);
                         $(".scores").show();
@@ -161,8 +163,8 @@ function randomColors() {
 
     function finalStart() {
         console.log("startGame")
-        var counter = 16;
-        var countdown = 4;
+        var counter = 1;
+        var countdown = 1;
 
         $(".scores").hide();
         $("#displayMatchValues").hide();
@@ -207,6 +209,8 @@ function randomColors() {
                         calculateBlue();
                         totalScore();
                         finalScore();
+                        displayFinalScore()
+
                     
                     }
                 }, 1000); 
@@ -215,13 +219,17 @@ function randomColors() {
     }
 }        
 
-
-function getSum(total, num) {
-    return total + num;
+function displayFinalScore() {
+    return $("#final-score")[0].innerHTML = calculateTotalScore(finalScores);
 }
 
-function displayFinalScore(item) {
-    return $("#final-score")[0].innerHTML = finalScores.reduce(getSum, 0);
+//calculating final score from total scores array
+function calculateTotalScore(arr){
+    let val = 0;
+    arr.forEach((num) => {
+        val += Number(num);
+    })
+    return val;
 }
 
 function secondMod() {
@@ -253,19 +261,53 @@ function resetGame() {
     $(".game-start").hide();
 }
 
+//Color span limit function
+function limitValues(num) {
+    if (num >= 255) {
+        return 255;
+    } else if (num <= 0) {
+        return 0;
+    } else {
+        return num;
+    }
+}
+
+//On change, update input
 $('.rgb-input').on('DOMSubtreeModified',function(){
-    let red = $("#red").text();
-    let green = $("#green").text();
-    let blue = $("#blue").text();
-   
-    $("#input").css("background", "linear-gradient(rgba(" + red + ", " + green + ", " + blue + ", 0)," + " rgba("+ red + ", " + green + ", " + blue + ", 1))");
+    let red = $("#red");
+    let green = $("#green");
+    let blue = $("#blue");
+
+    $("#input").css("background", "linear-gradient(rgba(" + red.text() + ", " + green.text() + ", " + blue.text() + ", 0)," + " rgba("+ red.text() + ", " + green.text() + ", " + blue.text() + ", 1))");
   })
-  
+
+
+
 
 //SCRUBBER FUNCTION
-new Scrubbing ( document.querySelector ( '#red') );
-new Scrubbing ( document.querySelector ( '#green') );
-new Scrubbing ( document.querySelector ( '#blue') );
+var scurbberAdapter = {
+    init : function ( scrubbingElement ) { },
+
+    start : function ( scrubbingElement ) {
+       return Number(scrubbingElement.node.innerHTML); 
+      },
+
+   change : function ( scrubbingElement, value, delta ) { 
+       scrubbingElement.node.innerHTML = limitValues(value);
+   },
+
+   end : function ( scrubbingElement ) { }
+}
+
+new Scrubbing ( document.querySelector ( '#red'), {
+    adapter: scurbberAdapter
+} );
+new Scrubbing ( document.querySelector ( '#green'), {
+    adapter: scurbberAdapter
+} );
+new Scrubbing ( document.querySelector ( '#blue'), {
+    adapter: scurbberAdapter
+} );
 
 function niceJobBtn() {
     $('#modal-last').modal({        
@@ -283,6 +325,7 @@ function lastRound() {
     keyboard: false,
     show: true,});
     $(".game-start").hide();
+
 }
 
 $(window).on('load',function(){

@@ -8,7 +8,7 @@
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya:700|Lato:400,700" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -27,45 +27,54 @@
         <p> 
         Counter: <span id="counter">15</span>
     </p>
+
+    <!-- This will display the match values at the end of the round. -->
+    <div id="matchValues">
+        <span id="displayMatchValues"></span>
+    </div>
     
     <!-- This is the RGB inputs -->
-    <div id="color-inputs">
-    
-            <p>Red: 
-                <span class="scrubbing-horizontal rgb-input" id="red" ></span>
-            </p>
-    
-            <p>Green: 
-                <span class="scrubbing-horizontal rgb-input" id="green" ></span>
-            </p>
-    
-    
-            <p>Blue: 
-                <span class="scrubbing-horizontal rgb-input" id="blue" ></span>
-            </p>
-    
-    </div>
+    <div id="color-inputs" class="container-fluid lead strong">
+        <div class="row">
+            <div class="col-xs-4 col-md-4">
+                    <span class="scrubbing-horizontal rgb-input" id="red" ></span>
+            </div>
+            <div class="col-xs-4 col-md-4">
+                    <span class="scrubbing-horizontal rgb-input" id="green" ></span>
+            </div>
+            <div class="col-xs-4 col-md-4">
+                
+                    <span class="scrubbing-horizontal rgb-input" id="blue" ></span>
 
-    <div>
-        <span id="displayMatchValues">        </span>
+            </div>
+        </div>
     </div>
 
 
-    <div>
-        <p class="scores">
-            Red Score: <span id="score-red"></span>
-        </p>
-        <p class="scores">
-            Green Score: <span id="score-green"></span>
-        </p>
-        <p class="scores">
-            Blue Score: <span id="score-blue"></span>
-        </p>
-        <p class="scores">
-            Total Score: <span id="total-score"></span>
-        </p>
+<div id="color-scores" class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6 col-md-4">
+            <p class="scores">
+                Red Score: <span id="score-red"></span>
+            </p>
+        </div>
+        <div class="col-xs-6 col-md-4">
+            <p class="scores">
+                Green Score: <span id="score-green"></span>
+            </p>
+        </div>  
+        <div class="col-xs-6 col-md-4">
+            <p class="scores">
+                Blue Score: <span id="score-blue"></span>
+            </p>
+        </div>
+        <div class="col-xs-6 col-md-4">
+            <p class="scores">
+                Total Score: <span id="total-score"></span>
+            </p>
+        </div>
     </div>
-
+</div>
 
 
     <!-- BUTTONS -->
@@ -124,15 +133,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Round 2</h5>
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button> -->
                 </div>
                 <div class="modal-body">
                     <p>Ready?</p>
                 </div>
                     <button type="button" class="btn btn-primary" id="start-btn" onclick="randomColors()">Start!</button>
-                    <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
                 </div>
             </div>
         </div>

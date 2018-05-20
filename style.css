@@ -12,13 +12,12 @@ html {
 
 h1 {
     font-weight: 700;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Alegreya', serif;
+    text-align: left;
 }
 
 body {
     font-family: 'Open Sans', sans-serif;
-    mix-blend-mode: difference;
-    text-align: center;
 }
 
 .div {
@@ -46,6 +45,8 @@ body {
     height:100%;
     top:0px;
     left:0px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 
@@ -53,6 +54,42 @@ body {
 .scrubbing-horizontal{
     cursor: col-resize;
   }
+
+#color-inputs {
+    text-align: center;
+    position: fixed;
+    bottom: 200px;
+    /* mix-blend-mode: difference; */
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 5rem;
+    color: white;
+}
+
+#matchValues {
+    text-align: center;
+}
+
+.modal {
+    text-align: center;
+  }
+  
+@media screen and (min-width: 768px) { 
+.modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+}
+}
+  
+.modal-dialog {
+display: inline-block;
+text-align: left;
+vertical-align: middle;
+}
+
 /* SCRUBBER ELEMENTS
 
 
