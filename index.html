@@ -18,20 +18,32 @@
         <!-- Color Divs -->
         <div class="div" id="match"></div>
         <div class="div" id="input" ></div>
+        <div>
+            <!-- countdown clock displays here -->
+            <p> <span id="counter">15</span></p>
+        </div>
     </div>
     <div class="game-start">
-        <div id="countdown-screen">
+        <!-- <div id="countdown-screen">
             <span id="countdown">3</span>
-        </div>
+        </div> -->
     
-        <p> 
-        Counter: <span id="counter">15</span>
-    </p>
+
 
     <!-- This will display the match values at the end of the round. -->
-    <div id="matchValues">
-        <span id="displayMatchValues"></span>
-    </div>
+    <div id="displayMatchValues" class="container-fluid lead strong">
+            <div class="row">
+                <div class="col-xs-4 col-md-4">
+                        <span id="match-red" ></span>
+                </div>
+                <div class="col-xs-4 col-md-4">
+                        <span id="match-green" ></span>
+                </div>
+                <div class="col-xs-4 col-md-4">
+                        <span id="match-blue" ></span>
+                </div>
+            </div>
+        </div>
     
     <!-- This is the RGB inputs -->
     <div id="color-inputs" class="container-fluid lead strong">
@@ -68,25 +80,26 @@
                 Blue Score: <span id="score-blue"></span>
             </p>
         </div>
-        <div class="col-xs-6 col-md-4">
-            <p class="scores">
-                Total Score: <span id="total-score"></span>
-            </p>
-        </div>
+        
     </div>
 </div>
 
+<div id="total-score-div"class="col-xs-6 col-md-4">
+    <p  class="scores">
+        Score: <span id="total-score"></span>
+    </p>
+</div>
 
     <!-- BUTTONS -->
-    <button type="button" class="btn btn-primary nextRoundBtn" onclick="nextRound()">Next Round</button>
+    <button type="button" class="btn btn-primary nextRoundBtn transparent-btn" onclick="nextRound()">Next Round</button>
 
-    <button type="button" class="btn btn-primary lastRoundBtn" onclick="lastRound()">Last Round</button>
+    <button type="button" class="btn btn-primary lastRoundBtn transparent-btn" onclick="lastRound()">Last Round</button>
 
-    <button type="button" class="btn btn-primary gameEndBtn" onclick="niceJobBtn()">Nice job!</button>
+    <button type="button" class="btn btn-primary gameEndBtn transparent-btn" onclick="niceJobBtn()">Nice job!</button>
 </div>
 
     <!-- First Modal -->
-<div id="modal-one" class="modal fade" tabindex="-1" role="dialog">
+<div id="modal-one" class="modal custom fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -99,14 +112,14 @@
                 <p>The RGB game is intended to be a learning experience for users (likely designers, coders or maybe just color enthusiasts!) to get a better understanding of how the values of <span class="bold" >R</span>ed, <span class="bold" >B</span>lue, and <span class="bold" >G</span>reen interact on our computers.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="secondMod()">Next</button>
+                <button type="button" class="btn btn-primary modal-btn" onclick="secondMod()">Next</button>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Second Modal -->
-<div id="modal-two" class="modal fade" tabindex="-1" role="dialog">
+<div id="modal-two" class="modal custom fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -116,11 +129,11 @@
                 </button> -->
             </div>
             <div class="modal-body">
-                <p>You have 10 seconds to get the bottom color as close to the top color as you can by inputting the values for red, green, and blue. Player with the highest score wins!   </p>
+                <p>You have 15 seconds to get the bottom color as close to the top color as you can by inputting the values for red, green, and blue. Player with the highest score wins!   </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="firstMod()">Previous</button>
-                <button type="button" class="btn btn-primary" id="start-btn" onClick="randomColors()">Start</button>
+                <button type="button" class="btn btn-primary modal-btn" onclick="firstMod()">Previous</button>
+                <button type="button" class="btn btn-primary modal-btn" id="start-btn" onClick="randomColors()">Start</button>
                 <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
             </div>
         </div>
@@ -128,7 +141,7 @@
 </div>
 
 <!-- Round 2 Modal -->
-<div id="modal-r2" class="modal fade" tabindex="-1" role="dialog">
+<div id="modal-r2" class="modal custom fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -137,14 +150,14 @@
                 <div class="modal-body">
                     <p>Ready?</p>
                 </div>
-                    <button type="button" class="btn btn-primary" id="start-btn" onclick="randomColors()">Start!</button>
+                    <button type="button" class="btn btn-primary modal-btn" id="start-btn" onclick="randomColors()">Start!</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Final Round Modal -->
-    <div id="modal-r3" class="modal fade" tabindex="-1" role="dialog">
+    <div id="modal-r3" class="modal custom fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -156,7 +169,7 @@
                     <div class="modal-body">
                         <p>Last round! Ready?</p>
                     </div>
-                        <button type="button" class="btn btn-primary" id="start-btn" onclick="randomColors()">Start!</button>
+                        <button type="button" class="btn btn-primary modal-btn" id="start-btn" onclick="randomColors()">Start!</button>
                         <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
                     </div>
                 </div>
@@ -164,7 +177,7 @@
         </div>
 
     <!-- Game Over Modal -->
-    <div id="modal-last" class="modal fade" tabindex="-1" role="dialog">
+    <div id="modal-last" class="modal custom fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -176,7 +189,7 @@
                 <div class="modal-body">
                     <p>Great job! Your final score is <span id="final-score"></span>.</p>
                 </div>
-                    <button type="button" class="btn btn-primary" id="reset-btn" onclick="resetGame()">Try Again?</button>
+                    <button type="button" class="btn btn-primary modal-btn" id="reset-btn" onclick="resetGame()">Try Again?</button>
                     <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
                 </div>
             </div>

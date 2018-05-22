@@ -23,6 +23,7 @@ function randomColors() {
     // changeValues();
     gameRounds();
 
+    // dictates whether to run through round 1||2 or final round
     function gameRounds() {
         if (finalScores.length >= 2) {
             finalStart();
@@ -89,15 +90,21 @@ function randomColors() {
     }
 
     function displayMatch() {
-        let matchValues = $("#displayMatchValues");
-        matchValues[0].innerHTML = rM + ", " + gM + ", " + bM;
+        // let matchValues = $("#displayMatchValues");
+        // matchValues[0].innerHTML = rM + ", " + gM + ", " + bM;
+        $("#match-red")[0].innerHTML = rM;
+        $("#match-green")[0].innerHTML = gM;
+        $("#match-blue")[0].innerHTML = bM;
     }
 
+    // function lockSpan(color){
+    //     return color;
+    // }
 
     function startGame() {
         console.log("startGame")
-        var counter = 1;
-        var countdown = 1;
+        var counter = 16;
+        // var countdown = 4;
 
         $(".scores").hide();
         $("#displayMatchValues").hide();
@@ -107,15 +114,21 @@ function randomColors() {
         $(".gameEndBtn").hide();
         $('#modal-last').modal('hide');
         
-        setInterval(function(){
-            countdown--;
-            if (countdown >= 0) {
-                span = document.getElementById("countdown");
-                span.innerHTML = countdown;
-                $("#countdown-screen").show();
-                $(".rgb-input").prop('disabled', true);
-            }
-            if (countdown === 0) {
+        $("#red").disabled;
+        
+        
+        // setInterval(function(){
+        //     countdown--;
+            // if (countdown >= 0) {
+            //     span = document.getElementById("countdown");
+            //     span.innerHTML = countdown;
+            //     $("#countdown-screen").show();
+            //     // $(".rgb-input").prop('disabled', true);
+                
+            //     // locks span for RGB Values during initial countdown 
+                
+            // }
+            // if (countdown === 0) {
                 $("#countdown-screen").hide();
                 setInterval(function(){
                         counter--;
@@ -156,15 +169,15 @@ function randomColors() {
                     
                     }
                 }, 1000); 
-            }
-        }, 1000)
+        //     }
+        // }, 1000)
     }
 
 
     function finalStart() {
         console.log("startGame")
-        var counter = 1;
-        var countdown = 1;
+        var counter = 16;
+        var countdown = 4;
 
         $(".scores").hide();
         $("#displayMatchValues").hide();
@@ -223,22 +236,16 @@ function displayFinalScore() {
     return $("#final-score")[0].innerHTML = calculateTotalScore(finalScores);
 }
 
-//calculating final score from total scores array
-function calculateTotalScore(arr){
-    let val = 0;
-    arr.forEach((num) => {
-        val += Number(num);
-    })
-    return val;
-}
+
 
 function secondMod() {
+    $("#modal-one").modal('hide');
     $("#modal-two").modal({        
         backdrop: 'static', 
         backdrop: false,
         keyboard: false,
         show: true,});
-    $("#modal-one").modal('hide');
+    
 }
 
 function nextRound() {
@@ -279,10 +286,7 @@ $('.rgb-input').on('DOMSubtreeModified',function(){
     let blue = $("#blue");
 
     $("#input").css("background", "linear-gradient(rgba(" + red.text() + ", " + green.text() + ", " + blue.text() + ", 0)," + " rgba("+ red.text() + ", " + green.text() + ", " + blue.text() + ", 1))");
-  })
-
-
-
+})
 
 //SCRUBBER FUNCTION
 var scurbberAdapter = {

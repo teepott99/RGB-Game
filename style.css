@@ -1,3 +1,21 @@
+body {
+    background: linear-gradient(3deg, #2952b1, #44b129, #ae29b1, #fe4100, #feb100, #27cbd1, #c104ff, #d10c6d, #6751cb, #cbab51);
+    background-size: 2000% 2000%;
+    
+    -webkit-animation: AnimationName 59s ease infinite;
+    animation: AnimationName 59s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
+@keyframes AnimationName { 
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
+
 .scores {
     display: none;
 }
@@ -12,8 +30,13 @@ html {
 
 h1 {
     font-weight: 700;
-    font-family: 'Alegreya', serif;
+    font-family: 'Lato', sans-serif;
     text-align: left;
+    color: white;
+    top: 5px;
+    left: 10px;
+    position: fixed;
+    font-size: 2em;
 }
 
 body {
@@ -29,16 +52,18 @@ body {
     z-index:-1000;
 }
 
-#countdown {
+
+
+/* #countdown {
     color: white;
     font-size: 10em;
     position: fixed;
     top: 50%;
     left: 50%;
   
-}
+} */
 
-#countdown-screen {
+/* #countdown-screen {
     background: rgba(0,0,0,.3);
     position:fixed;
     width:100%;
@@ -47,14 +72,22 @@ body {
     left:0px;
     display: inline-block;
     vertical-align: middle;
+} */
+
+#counter {
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    color: white;
+    font-size: 2em;
+
 }
 
-
-
 .scrubbing-horizontal{
-    cursor: col-resize;
-  }
+    cursor: ew-resize;
+}
 
+/* COLOR INPUTS STYLES */
 #color-inputs {
     text-align: center;
     position: fixed;
@@ -63,76 +96,112 @@ body {
     display: block;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
-    font-size: 5rem;
+    font-size: 5em;
     color: white;
 }
 
-#matchValues {
+/* MATCH VALUES STYLES */
+#displayMatchValues {
+    position: fixed;
+    top: 200px;
+    /* mix-blend-mode: difference; */
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 5em;
+    color: rgba(255, 255, 255, .5);
     text-align: center;
 }
 
-.modal {
+/* DISPLAY COLOR UNDERLINE TO INDICATE RGB VALUE */
+#red {
+    border-bottom: 5px solid rgb(255, 0, 0);
+}
+
+#green {
+    border-bottom: 5px solid rgb(0, 255, 0);
+}
+
+#blue {
+    border-bottom: 5px solid rgb(0, 0, 255);
+}
+
+.transparent-btn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: block;
+    font-family: 'Lato', sans-serif;
+    border: 2px solid white;
+    background-color: rgba(0,0,0,0);
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.transparent-btn:hover {
+    background-color: white;
+    border: 2px solid white;
+    color: black;
+}
+
+.transparent-btn:focus {
+    border: 2px solid white;
+    background-color: rgba(0,0,0,0);
+    color: white;
+}
+
+.modal-btn {
+    background-color: black;
+    border: 2px solid black;
+    color: white;
+}
+
+.modal-btn:hover {
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+}
+
+.modal-btn:hover, .modal-btn:focus, .modal-btn:active, .modal-btn.active, .open > .dropdown-toggle.modal-btn {
+    background-color: black;
+    border: 2px solid black;
+    color: white;
+}
+
+#color-scores {
+    display: none;
+}
+
+#total-score-div {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-family: 'Lato', sans-serif;
+    color: white;
+}
+
+.modal.custom {
     text-align: center;
-  }
+    padding: 20px 50px 20px 20px;
+
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
   
-@media screen and (min-width: 768px) { 
+
 .modal:before {
     display: inline-block;
     vertical-align: middle;
     content: " ";
     height: 100%;
 }
-}
+
   
-.modal-dialog {
-display: inline-block;
-text-align: left;
-vertical-align: middle;
-}
-
-/* SCRUBBER ELEMENTS
 
 
-
-
-.slider {
-      position: absolute;
-      left: 50%;
-      margin-left: -101px;
-      top: 10px;
-      opacity: 0;
-      cursor: e-resize !important;
-    }
-
-.inputNumber {
-    position: relative;
-    margin-bottom: 20px;
-    width: 200px;
-    height: 35px;
-    padding: 3px 6px;
-    font-size: 16px;
-    border-radius: 5px;
-    outline: none;
-    cursor: e-resize !important;
-}
-
-.ui-slider {
-    height: 40px !important;
-    top: 0px !important;
-    border-radius: 5px !important;
-    cursor: e-resize !important;
-    }
-    
-.ui-slider-handle {
-    background: red !important;
-    height: 40px !important;
-    top: -1px !important;
-    outline: none !important;
-    cursor: e-resize !important;
-}
-#red {
-    border: 2px solid #333;
-    background: #222;
-    color: #fff;
-}
-     */
