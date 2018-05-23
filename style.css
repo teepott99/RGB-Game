@@ -164,7 +164,7 @@ body {
     color: black;
 }
 
-.modal-btn:hover, .modal-btn:focus, .modal-btn:active, .modal-btn.active, .open > .dropdown-toggle.modal-btn {
+.modal-btn:active:focus {
     background-color: black;
     border: 2px solid black;
     color: white;
@@ -180,6 +180,7 @@ body {
     left: 0;
     font-family: 'Lato', sans-serif;
     color: white;
+    
 }
 
 .modal.custom {
