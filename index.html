@@ -24,12 +24,6 @@
         </div>
     </div>
     <div class="game-start">
-        <!-- <div id="countdown-screen">
-            <span id="countdown">3</span>
-        </div> -->
-    
-
-
     <!-- This will display the match values at the end of the round. -->
     <div id="displayMatchValues" class="container-fluid lead strong">
             <div class="row">
@@ -62,7 +56,7 @@
         </div>
     </div>
 
-
+<!-- Optional display of Red, green and blue scores -->
 <div id="color-scores" class="container-fluid">
     <div class="row">
         <div class="col-xs-6 col-md-4">
@@ -79,11 +73,11 @@
             <p class="scores">
                 Blue Score: <span id="score-blue"></span>
             </p>
-        </div>
-        
+        </div>   
     </div>
 </div>
 
+<!-- Round score display. -->
 <div id="total-score-div"class="col-xs-6 col-md-4">
     <p  class="scores">
         Round Score: <span id="total-score"></span>
@@ -100,13 +94,10 @@
 
     <!-- First Modal -->
 <div id="modal-one" class="modal custom fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog  modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Welcome!</h5>
-                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button> -->
             </div>
             <div class="modal-body">
                 <p>The RGB game is intended to be a learning experience for users (likely designers, coders or maybe just color enthusiasts!) to get a better understanding of how the values of <span class="bold" >R</span>ed, <span class="bold" >B</span>lue, and <span class="bold" >G</span>reen interact on our computers.</p>
@@ -120,21 +111,18 @@
 
 <!-- Second Modal -->
 <div id="modal-two" class="modal custom fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog  modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">The Rules</h5>
-                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button> -->
             </div>
             <div class="modal-body">
-                <p>You have 15 seconds to get the bottom color as close to the top color as you can by inputting the values for red, green, and blue. Player with the highest score wins!   </p>
+                <p>You have 15 seconds to get the bottom color as close to the top color as you can by dragging the values for Red, Green, and Blue left or right.</p>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary modal-btn" onclick="firstMod()">Previous</button>
-                <button type="button" class="btn btn-primary modal-btn" id="start-btn" onClick="randomColors()">Start</button>
-                <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
+                <button type="button" class="btn btn-primary modal-btn start-btn" onClick="randomColors()">Start</button>
             </div>
         </div>
     </div>
@@ -142,15 +130,16 @@
 
 <!-- Round 2 Modal -->
 <div id="modal-r2" class="modal custom fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog  modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Round 2</h5>
                 </div>
                 <div class="modal-body">
+                    <p>Wasn't easy, huh? Before going into round two, keep these tips in mind! Lighter colors have higher values while darker colors are lower. If you want to add more yellow to your match, then consider adding red!</p>
                     <p>Ready?</p>
                 </div>
-                    <button type="button" class="btn btn-primary modal-btn" id="start-btn" onclick="randomColors()">Start!</button>
+                    <button type="button" class="btn btn-primary modal-btn start-btn" onclick="randomColors()">Start!</button>
                 </div>
             </div>
         </div>
@@ -158,19 +147,15 @@
 
     <!-- Final Round Modal -->
     <div id="modal-r3" class="modal custom fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog  modal-md" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Round 3</h5>
-                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button> -->
                     </div>
                     <div class="modal-body">
                         <p>Last round! Ready?</p>
                     </div>
-                        <button type="button" class="btn btn-primary modal-btn" id="start-btn" onclick="randomColors()">Start!</button>
-                        <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
+                        <button type="button" class="btn btn-primary modal-btn start-btn" onclick="randomColors()">Start!</button>
                     </div>
                 </div>
             </div>
@@ -178,19 +163,15 @@
 
     <!-- Game Over Modal -->
     <div id="modal-last" class="modal custom fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog  modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Congratulations!</h5>
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button> -->
                 </div>
                 <div class="modal-body">
                     <p>Great job! Your final score is <span id="final-score"></span>.</p>
                 </div>
                     <button type="button" class="btn btn-primary modal-btn" id="reset-btn" onclick="resetGame()">Try Again?</button>
-                    <!-- <button type="button" class="btn btn-primary" id="start-btn" data-dismiss="modal">Start</button> -->
                 </div>
             </div>
         </div>

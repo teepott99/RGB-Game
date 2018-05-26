@@ -116,61 +116,44 @@ function randomColors() {
         
         $("#red").disabled;
         
-        
-        // setInterval(function(){
-        //     countdown--;
-            // if (countdown >= 0) {
-            //     span = document.getElementById("countdown");
-            //     span.innerHTML = countdown;
-            //     $("#countdown-screen").show();
-            //     // $(".rgb-input").prop('disabled', true);
+    
+        $("#countdown-screen").hide();
+        setInterval(function(){
+                counter--;
+            if (counter >= 0) {
+                    span = document.getElementById("counter");
+                    span.innerHTML = counter;
+                    $(".rgb-input").prop('disabled', false);
+                }
+            if (counter === 0) {
+                console.log('sorry, out of time');
                 
-            //     // locks span for RGB Values during initial countdown 
+                clearInterval(counter);
                 
-            // }
-            // if (countdown === 0) {
-                $("#countdown-screen").hide();
-                setInterval(function(){
-                        counter--;
-                    if (counter >= 0) {
-                            span = document.getElementById("counter");
-                            span.innerHTML = counter;
-                            $(".rgb-input").prop('disabled', false);
-                        }
-                    if (counter === 0) {
-                        console.log('sorry, out of time');
-                        
-                        clearInterval(counter);
-                        
-                        displayMatch();
-                        calculateRed();
-                        calculateGreen();
-                        calculateBlue();
-                        totalScore();
-                        finalScore();
-                        
-                        
-            
-                        $(".rgb-input").prop('disabled', true);
-                        $(".scores").show();
-                        
-                        $("#displayMatchValues").show();
-                        
-                        //Determins whether second round or last round display shows.
-                        if (finalScores.length >= 2) {
-                            $(".lastRoundBtn").show();
-                            
-                            console.log("last round button")
-                        } else {
-                            
-                            $(".nextRoundBtn").show();
-                            console.log("next round button")
-                        }
+                displayMatch();
+                calculateRed();
+                calculateGreen();
+                calculateBlue();
+                totalScore();
+                finalScore();
+
+                $(".scores").show();
+                $("#displayMatchValues").show();
+                
+                //Determins whether second round or last round display shows.
+                if (finalScores.length >= 2) {
+                    $(".lastRoundBtn").show();
                     
-                    }
-                }, 1000); 
-        //     }
-        // }, 1000)
+                    console.log("last round button")
+                } else {
+                    
+                    $(".nextRoundBtn").show();
+                    console.log("next round button")
+                }
+            
+            }
+        }, 1000); 
+
     }
 
 
@@ -179,64 +162,68 @@ function randomColors() {
         var counter = 16;
         var countdown = 4;
 
+        //hide bottons, modal, scores, and other div RGB values
         $(".scores").hide();
         $("#displayMatchValues").hide();
-
         $(".nextRoundBtn").hide();
         $(".lastRoundBtn").hide();
         $(".gameEndBtn").hide();
         $('#modal-r3').modal('hide');
         
+        //countdown for game
         setInterval(function(){
-            countdown--;
-            if (countdown >= 0) {
-                span = document.getElementById("countdown");
-                span.innerHTML = countdown;
-                $("#countdown-screen").show();
-                $(".rgb-input").prop('disabled', true);
-            }
-            if (countdown === 0) {
-                $("#countdown-screen").hide();
-                setInterval(function(){
-                        counter--;
-                    if (counter >= 0) {
-                            span = document.getElementById("counter");
-                            span.innerHTML = counter;
-                            $(".rgb-input").prop('disabled', false);
-                        }
-                    if (counter === 0) {
-                        console.log('sorry, out of time');
-                        
-                        clearInterval(counter);
-            
-                        $(".rgb-input").prop('disabled', true);
-                        $(".scores").show();
-                        
-                        $("#displayMatchValues").show();
+                counter--;
+            if (counter >= 0) {
+                    span = document.getElementById("counter");
+                    span.innerHTML = counter;
+                    $(".rgb-input").prop('disabled', false);
+                }
+            if (counter === 0) {
+                console.log('sorry, out of time');
+                
+                clearInterval(counter);
+    
+                $(".scores").show();
+                $("#displayMatchValues").show();
+                $(".gameEndBtn").show();
 
-                        $(".gameEndBtn").show();
-                        
-                        displayMatch();
-                        calculateRed();
-                        calculateGreen();
-                        calculateBlue();
-                        totalScore();
-                        finalScore();
-                        displayFinalScore()
-
-                    
-                    }
-                }, 1000); 
+                
+                
+                displayMatch();
+                calculateRed();
+                calculateGreen();
+                calculateBlue();
+                totalScore();
+                finalScore();
+                displayFinalScore()
             }
-        }, 1000)
+        }, 1000); 
     }
-}        
+}
+      
 
+//changes html to display final score in end of game modal
 function displayFinalScore() {
     return $("#final-score")[0].innerHTML = calculateTotalScore(finalScores);
 }
 
+//calculating final score from total scores array
+function calculateTotalScore(arr){
+    let val = 0;
+    arr.forEach((num) => {
+        val += Number(num);
+    })
+    return val;
+}
 
+function firstMod() {
+    $("#modal-one").modal({
+        backdrop: 'static', 
+        backdrop: false,
+        keyboard: false,
+        show: true,});
+    $("#modal-two").modal('hide');
+}
 
 function secondMod() {
     $("#modal-one").modal('hide');
