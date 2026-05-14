@@ -20,7 +20,7 @@
         <div class="div" id="input" ></div>
         <div>
             <!-- countdown clock displays here -->
-            <p> <span id="counter">15</span></p>
+            <p><span id="counter-icon">⏱</span> <span id="counter">15</span></p>
         </div>
     </div>
     <div class="game-start">
@@ -80,7 +80,7 @@
 <!-- Round score display. -->
 <div id="total-score-div"class="col-xs-6 col-md-4">
     <p  class="scores">
-        Round Score: <span id="total-score"></span>
+        Match: <span id="total-score"></span>
     </p>
 </div>
 
@@ -130,36 +130,38 @@
 
 <!-- Round 2 Modal -->
 <div id="modal-r2" class="modal custom fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog  modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Round 2</h5>
-                </div>
-                <div class="modal-body">
-                    <p>Wasn't easy, huh? Before going into round two, keep these tips in mind! Lighter colors have higher values while darker colors are lower. If you want to add more yellow to your match, then consider adding red!</p>
-                    <p>Ready?</p>
-                </div>
-                    <button type="button" class="btn btn-primary modal-btn start-btn" onclick="randomColors()">Start!</button>
-                </div>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Round 2</h5>
+            </div>
+            <div class="modal-body">
+                <p>Wasn't easy, huh? Before going into round two, keep these tips in mind! Lighter colors have higher values while darker colors are lower. If you want to add more yellow to your match, then consider adding red!</p>
+                <p>Ready?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary modal-btn start-btn" onclick="randomColors()">Start!</button>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Final Round Modal -->
-    <div id="modal-r3" class="modal custom fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog  modal-md" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Round 3</h5>
-                    </div>
-                    <div class="modal-body">
-                        <p>Last round! Ready?</p>
-                    </div>
-                        <button type="button" class="btn btn-primary modal-btn start-btn" onclick="randomColors()">Start!</button>
-                    </div>
-                </div>
+<!-- Final Round Modal -->
+<div id="modal-r3" class="modal custom fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Round 3</h5>
+            </div>
+            <div class="modal-body">
+                <p>Last round! Ready?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary modal-btn start-btn" onclick="randomColors()">Start!</button>
             </div>
         </div>
+    </div>
+</div>
 
     <!-- Game Over Modal -->
     <div id="modal-last" class="modal custom fade" tabindex="-1" role="dialog">

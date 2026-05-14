@@ -52,13 +52,19 @@ body {
     z-index:-1000;
 }
 
-#counter {
+#counter, #counter-icon {
     position: fixed;
     top: 5px;
-    right: 10px;
     color: white;
     font-size: 2em;
+}
 
+#counter-icon {
+    right: 60px;
+}
+
+#counter {
+    right: 10px;
 }
 
 .scrubbing-horizontal{
@@ -154,11 +160,14 @@ body {
 
 #total-score-div {
     position: fixed;
-    bottom: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 3em;
     color: white;
-    
+    text-align: center;
 }
 
 .modal.custom {

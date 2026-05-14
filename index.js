@@ -6,17 +6,19 @@ function randomColors() {
     $("#modal-r2").modal('hide');
     $(".game-start").show();
     
-    //Sets random values for Input Div
-    let r = Math.floor(Math.random()*256);          // Random between 0-255
-    let g = Math.floor(Math.random()*256);          // Random between 0-255
-    let b = Math.floor(Math.random()*256);          // Random between 0-255
-    let randomRGB = "linear gradient(rgba(" + r + ", " + g + ", " + b + ", 0)," + "rgba("+ r + ", " + g + ", " + b + ", 1))"; // Collect all to a string
-
     //Sets random values for Match Div
     let rM = Math.floor(Math.random()*256);          // Random between 0-255
     let gM = Math.floor(Math.random()*256);          // Random between 0-255
     let bM = Math.floor(Math.random()*256);          // Random between 0-255
-    let randomRGBMatch = 'rgb(' + rM + ',' + gM + ',' + bM + ')'; // Collect all to a string
+    let randomRGBMatch = 'rgb(' + rM + ',' + gM + ',' + bM + ')';
+
+    //Sets random values for Input Div, ensuring it's distinct from the match color
+    let r, g, b;
+    do {
+        r = Math.floor(Math.random()*256);
+        g = Math.floor(Math.random()*256);
+        b = Math.floor(Math.random()*256);
+    } while (Math.abs(r - rM) + Math.abs(g - gM) + Math.abs(b - bM) < 255);
 
     randomInputDiv();
     randomMatchDiv();    
@@ -40,7 +42,7 @@ function randomColors() {
         $("#green").text(g)
         $("#blue").text(b)
         //applies random color to input div
-        $("#input").css("background", randomRGB);
+        $("#input").css("background", "linear-gradient(rgba(" + r + ", " + g + ", " + b + ", 0), rgba(" + r + ", " + g + ", " + b + ", 1))");
         return;
     }
 
@@ -79,9 +81,10 @@ function randomColors() {
     }
 
     
-    function totalScore() {    
-        $("#total-score")[0].innerHTML = Number($("#score-blue")[0].innerHTML)+Number($("#score-green")[0].innerHTML)+Number($("#score-red")[0].innerHTML);
-        
+    function totalScore() {
+        let sum = Number($("#score-blue")[0].innerHTML) + Number($("#score-green")[0].innerHTML) + Number($("#score-red")[0].innerHTML);
+        let pct = Math.round(sum / 765 * 100);
+        $("#total-score")[0].innerHTML = pct + "%";
     }
 
     function finalScore() {
@@ -123,13 +126,14 @@ function randomColors() {
             if (counter >= 0) {
                     span = document.getElementById("counter");
                     span.innerHTML = counter;
-                    $(".rgb-input").prop('disabled', false);
+                    $(".rgb-input").css("pointer-events", "auto");
                 }
             if (counter === 0) {
                 console.log('sorry, out of time');
-                
+
                 clearInterval(counter);
-                
+                $(".rgb-input").css("pointer-events", "none");
+
                 displayMatch();
                 calculateRed();
                 calculateGreen();
@@ -176,13 +180,14 @@ function randomColors() {
             if (counter >= 0) {
                     span = document.getElementById("counter");
                     span.innerHTML = counter;
-                    $(".rgb-input").prop('disabled', false);
+                    $(".rgb-input").css("pointer-events", "auto");
                 }
             if (counter === 0) {
                 console.log('sorry, out of time');
-                
+
                 clearInterval(counter);
-    
+                $(".rgb-input").css("pointer-events", "none");
+
                 $(".scores").show();
                 $("#displayMatchValues").show();
                 $(".gameEndBtn").show();
@@ -211,9 +216,9 @@ function displayFinalScore() {
 function calculateTotalScore(arr){
     let val = 0;
     arr.forEach((num) => {
-        val += Number(num);
+        val += Number(String(num).replace('%', ''));
     })
-    return val;
+    return Math.round(val / arr.length) + "%";
 }
 
 function firstMod() {
@@ -266,15 +271,6 @@ function limitValues(num) {
     }
 }
 
-//On change, update input
-$('.rgb-input').on('DOMSubtreeModified',function(){
-    let red = $("#red");
-    let green = $("#green");
-    let blue = $("#blue");
-
-    $("#input").css("background", "linear-gradient(rgba(" + red.text() + ", " + green.text() + ", " + blue.text() + ", 0)," + " rgba("+ red.text() + ", " + green.text() + ", " + blue.text() + ", 1))");
-})
-
 //SCRUBBER FUNCTION
 var scurbberAdapter = {
     init : function ( scrubbingElement ) { },
@@ -283,8 +279,12 @@ var scurbberAdapter = {
        return Number(scrubbingElement.node.innerHTML); 
       },
 
-   change : function ( scrubbingElement, value, delta ) { 
+   change : function ( scrubbingElement, value, delta ) {
        scrubbingElement.node.innerHTML = limitValues(value);
+       let red = $("#red").text();
+       let green = $("#green").text();
+       let blue = $("#blue").text();
+       $("#input").css("background", "linear-gradient(rgba(" + red + ", " + green + ", " + blue + ", 0), rgba(" + red + ", " + green + ", " + blue + ", 1))");
    },
 
    end : function ( scrubbingElement ) { }
